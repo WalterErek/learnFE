@@ -52,3 +52,8 @@ const str = Math.random().toString(36).substr(2, 10);
 + outline的冷知识
 > 让元素有一个漂亮的边框，这行代码使用了CSS的outline属性。有一点你可能不知道，在CSS渲染的盒子模型（Box Model）中，outline并不会改变元素及其布局的位置。因此这比使用border属性要好得多
 
+## 20220424
++ 疫情更严重了，居家办公两天
++ 最近在做http sdk2.0，对于axios的理解更深刻了，文件加密，二进制流
++ Vue.js设计与实现继续看起来
++ Vue.js设计与实现继续看起来
