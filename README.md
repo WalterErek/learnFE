@@ -10,8 +10,10 @@ some essays on the way to be a FEer
 + [【前端体系】从一道面试题谈谈对EventLoop的理解](https://juejin.im/post/6868849475008331783#heading-18)
 + 再温习了一遍eventloop
 + tips:
+```
 .then需要等状态确定后才能知道注册then还是catch，因此状态还没有确定之前下面的then中的回调都不会注册当异步任务中
 finally无论状态有没有变都能够触发，因此会不依赖于状态改变注册
+```
 
 ## 20200927
 + toFixed采用的银行家算法
@@ -64,7 +66,7 @@ const str = Math.random().toString(36).substr(2, 10);
 ```
 peerDependencies按我理解适用的场景是类似vue或者react对应的插件场景，比如hooks，期望react是>16.8版本的。
 期望主工程有，但是因为版本号问题，不会下载多份
-dependecies里则会被安装
+dependecies里则会被安装,peerDependencies不会安装（不同Npm版本处理不一致，就像node_modules层级一样）
 之前做http SDK Npm包时axios放在dependencies时是符合预期的，包本身会依赖axios，并且打包时是external出去的
 但具体到项目使用，如果文档要求axios版本v0.21.2之后的版本，似乎在这个场景下放peerDependencies也不是不行，但是会增加使用者成本
 毕竟现在还碰到一个问题没有解决，由于sdk依赖axios v0.21.2版本开始的拦截器runWhen，主工程dependecies中dependencies中axios版本安装低于该版本，如v0.19.2，那么产物中只会打包主工程中依赖的版本，导致异常，即使sdk中声明了axios依赖是v0.21.2之后的版本
