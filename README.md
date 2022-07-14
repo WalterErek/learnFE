@@ -57,3 +57,19 @@ const str = Math.random().toString(36).substr(2, 10);
 + 最近在做http sdk2.0，对于axios的理解更深刻了，文件加密，二进制流
 + Vue.js设计与实现继续看起来
 + Vue.js设计与实现继续看起来
+
+## 20220715
++ 早起2天了
++ 关于peerDependencies
+```
+peerDependencies按我理解适用的场景是类似vue或者react对应的插件场景，比如hooks，期望react是>16.8版本的。
+期望主工程有，但是因为版本号问题，不会下载多份
+dependecies里则会被安装
+之前做http SDK Npm包时axios放在dependencies时是符合预期的，包本身会依赖axios，并且打包时是external出去的
+但具体到项目使用，如果文档要求axios版本v0.21.2之后的版本，似乎在这个场景下放peerDependencies也不是不行，但是会增加使用者成本
+毕竟现在还碰到一个问题没有解决，由于sdk依赖axios v0.21.2版本开始的拦截器runWhen，主工程dependecies中dependencies中axios版本安装低于该版本，如v0.19.2，那么产物中只会打包主工程中依赖的版本，导致异常，即使sdk中声明了axios依赖是v0.21.2之后的版本
+
+参考：
+https://juejin.cn/post/7007197855102287885
+https://juejin.cn/post/6844904134248759309
+```
